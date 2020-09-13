@@ -1,0 +1,68 @@
+#stacks using linked list
+#include <iostream>
+
+using namespace std;
+
+struct node
+{
+    int data;
+    struct node *next;
+};
+struct node *top=NULL;
+void push(int data)
+{
+    struct node*new_node;
+    new_node=(struct node*)malloc(sizeof(struct node));
+    new_node->data=data;
+    new_node->next=top;
+    top=new_node;
+}
+void pop()
+{
+    if(top==0)
+    {
+        cout<<"empty stack";
+    }
+    else
+    {
+        struct node*temp;
+        temp=top;
+    top=top->next;
+    free(temp);
+        
+        
+    }
+    
+    
+    
+}
+void peek()
+{
+    cout<<"the peak most node is"<<top->data;
+}
+void display()
+{
+    struct node* ptr;
+    ptr=top;
+    while(ptr!=NULL)
+    {
+        cout<<ptr->data<<" ";
+        
+        ptr=ptr->next;
+        
+    }
+    cout<<"\n";
+}
+int main()
+{
+    push(2);
+     push(3);
+      push(4);
+      cout<<"before pop";
+      display();
+      pop();
+      cout<<"after pop";
+      display();
+      peek();
+    
+}
